@@ -1,0 +1,28 @@
+<form [formGroup]="formEmpleado" (ngSubmit)="guardar()">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Nombre completo</mat-label>
+      <input matInput formControlName="nombreCompleto" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Correo</mat-label>
+      <input matInput type="email" formControlName="correo" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Sueldo</mat-label>
+      <input matInput type="number" formControlName="sueldo" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Fecha de Contrato</mat-label>
+      <input matInput type="date" formControlName="fechaContrato" />
+    </mat-form-field>
+  
+    <div class="btn-group">
+      <button mat-raised-button color="primary" type="submit" [disabled]="formEmpleado.invalid">Guardar</button>
+      <button mat-raised-button color="accent" type="button" (click)="limpiar()">Limpiar</button>
+      <button mat-raised-button color="warn" type="button" (click)="volver()">Volver</button>
+    </div>
+  </form>
+  
