@@ -52,19 +52,24 @@ namespace MiWebAPI.Controllers
         {
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, usuario.IdUsuario.ToString()),
-                new Claim(ClaimTypes.Name, usuario.NombreUsuario!)
-                // Puedes agregar más claims si es necesario (roles, etc.)
-            };
+        new Claim(ClaimTypes.NameIdentifier, usuario.IdUsuario.ToString()),
+        new Claim(ClaimTypes.Name, usuario.NombreUsuario!)
+    };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:SecretKey"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            var now = DateTime.UtcNow;
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddHours(2), // Tiempo de expiración del token
-                SigningCredentials = creds
+                NotBefore = now,
+                IssuedAt = now,
+                Expires = now.AddHours(2), // 2 horas desde ahora
+                SigningCredentials = creds,
+                Issuer = _config["JwtSettings:Issuer"],
+                Audience = _config["JwtSettings:Audience"] // Asegúrate de usar el valor de la configuración
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();

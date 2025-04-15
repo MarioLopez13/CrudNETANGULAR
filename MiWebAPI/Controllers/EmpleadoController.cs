@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using MiWebAPI.Data;
@@ -6,6 +7,7 @@ using MiWebAPI.Models;
 
 namespace MiWebAPI.Controllers
 {
+    [Authorize] // Requiere autenticación para acceder a este controlador
     [Route("api/[controller]")]
     [ApiController]
     public class EmpleadoController : ControllerBase
