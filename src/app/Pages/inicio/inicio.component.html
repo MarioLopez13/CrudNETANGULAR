@@ -8,37 +8,35 @@
 
   <mat-card-content>
 
-    <button mat-raised-button color="accent" style="margin-bottom: 20px;" (click)="nuevo()">
-      <mat-icon>person_add</mat-icon> Nuevo Empleado
-    </button>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <button mat-raised-button color="accent" (click)="nuevo()">
+        <mat-icon>person_add</mat-icon> Nuevo Empleado
+      </button>
+      <button mat-button (click)="logout()">Cerrar Sesión</button>
+    </div>
 
     <table mat-table [dataSource]="listaEmpleados" class="mat-elevation-z4" style="margin-top:20px; background: white; border-radius: 8px; overflow: hidden;">
 
-      <!-- Nombre Completo -->
       <ng-container matColumnDef="nombreCompleto">
         <th mat-header-cell *matHeaderCellDef style="color: #374151;">Nombre Completo</th>
         <td mat-cell *matCellDef="let element"> {{element.nombreCompleto}} </td>
       </ng-container>
 
-      <!-- Correo -->
       <ng-container matColumnDef="correo">
         <th mat-header-cell *matHeaderCellDef style="color: #374151;">Correo</th>
         <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
       </ng-container>
 
-      <!-- Sueldo -->
       <ng-container matColumnDef="sueldo">
         <th mat-header-cell *matHeaderCellDef style="color: #374151;">Sueldo</th>
         <td mat-cell *matCellDef="let element"> ${{element.sueldo}} </td>
       </ng-container>
 
-      <!-- Fecha Contrato -->
       <ng-container matColumnDef="fechaContrato">
         <th mat-header-cell *matHeaderCellDef style="color: #374151;">Fecha Contrato</th>
         <td mat-cell *matCellDef="let element"> {{element.fechaContrato}} </td>
       </ng-container>
 
-      <!-- Acciones -->
       <ng-container matColumnDef="accion">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
