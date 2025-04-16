@@ -1,6 +1,9 @@
+
+
 # CRUD de Empleados (.NET + Angular)
 
 Este proyecto es una aplicación CRUD (Crear, Leer, Actualizar, Eliminar) de empleados, desarrollada con un backend en ASP.NET Core y un frontend en Angular.
+Para ejecutar el angular ng serve --open
 
 ## 🧩 Estructura del Proyecto
 
